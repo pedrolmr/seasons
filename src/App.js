@@ -14,15 +14,23 @@ class App extends Component {
     );
   }
 
-  render() {
-    if(this.state.errorMessage && !this.state.latitude){
+  renderContent() {
+    if (this.state.errorMessage && !this.state.latitude) {
       return <div>Error: {this.state.errorMessage}</div>
     }
-    if(!this.state.errorMessage && this.state.latitude){
+    if (!this.state.errorMessage && this.state.latitude) {
       return <SeasonDisplay latitude={this.state.latitude} />
-    }else{
-      return <Spinner message='Accept location request'/>
+    } else {
+      return <Spinner message='Accept location request' />
     }
+  }
+
+  render() {
+    return(
+      <div className="border">
+        {this.renderContent()}
+      </div>
+    );
   }
 }
 
